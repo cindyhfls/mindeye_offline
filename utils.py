@@ -797,7 +797,7 @@ def filter_and_average_mst(vox, vox_image_dict):
     return output_vox[keep_mask], np.where(keep_mask)[0]
 
 
-def filter_and_average_repeats(vox, vox_image_names):
+def filter_and_average_repeats(vox, vox_image_names, num_avg=3):
     """
     Filters and averages repeated images and retains unique images. Images means repeats are possible while conditions corresponds to unique images only.
     
@@ -823,7 +823,7 @@ def filter_and_average_repeats(vox, vox_image_names):
     # Average repeated images
     for indices in repeats.values():
         if len(indices) > 1:
-            avg_values = np.mean(vox[indices], axis=0)
+            avg_values = np.mean(vox[indices[:num_avg]], axis=0)
             output_vox[indices[0]] = avg_values
             keep_mask[indices[1:]] = False
     

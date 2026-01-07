@@ -64,3 +64,6 @@ wandb/
 wandb_test.ipynb
 wandb_test.py
 .run_all_batch.slurm.swp
+
+artifacts/
+*.sbatch
